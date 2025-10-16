@@ -1,26 +1,78 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+
+.aurora-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.aurora-shape-1, .aurora-shape-2, .aurora-shape-3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+}
+
+.aurora-shape-1 {
+  width: 500px;
+  height: 500px;
+  background-color: #ff00c8;
+  top: -150px;
+  left: -150px;
+  animation: move-aurora-1 15s infinite alternate;
+}
+
+.aurora-shape-2 {
+  width: 400px;
+  height: 400px;
+  background-color: #3b82f6;
+  bottom: -100px;
+  right: -100px;
+  animation: move-aurora-2 18s infinite alternate;
+}
+
+.aurora-shape-3 {
+  width: 300px;
+  height: 300px;
+  background-color: #eab308;
+  top: 20%;
+  right: 20%;
+  animation: move-aurora-3 20s infinite alternate;
+}
+
+@keyframes move-aurora-1 {
+  from { transform: translate(-100px, -50px) rotate(0deg); }
+  to { transform: translate(100px, 50px) rotate(30deg); }
+}
+
+@keyframes move-aurora-2 {
+  from { transform: translate(50px, 100px) rotate(0deg); }
+  to { transform: translate(-50px, -100px) rotate(-30deg); }
+}
+
+@keyframes move-aurora-3 {
+  from { transform: scale(1) rotate(0deg); }
+  to { transform: scale(1.2) rotate(20deg); }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.prose {
+    max-width: 100%;
 }
